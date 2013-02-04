@@ -1,0 +1,46 @@
+#Introduction
+This is a open source web-base mail server.
+use this script to auto-deploy it.
+
+This script use to will deploy the following servers:
+ Web Server: 		Apache2 		ver:2.2.22
+ Database Server: 	Mysql 			ver:5.5.29
+ Web for Database: 	Phpmyadmin   		ver:3.4.10
+ Mail Server (MTA): 	Postfix 		ver:2.9.3
+ Mail Server (MDA):	Maildrop 		ver:2.5.5
+ WebMail Management: 	ExtMan 			ver:1.1
+ WebMail System: 	Extmail 		ver:1.2
+ Log Analyse Tool: 	Mailgraph_ext 		ver:1.14
+ Library for Maildrop: 	Courier 		ver:0.63
+
+this scripts mainly refers from:
+http://wiki.extmail.org/extmail_solution_for_centos-5
+http://www.linuxidc.com/Linux/2009-11/22514.htm
+https://bugs.launchpad.net/ubuntu/+source/cyrus-sasl2/+bug/875440
+
+
+#Installation
+1.fill up the ./config file 
+	EXTMAIL_DOMAIN	domain is your server's domain.example: example.com or globalmarket.com
+	MYSQL_PASSWD	the password for mysql's root.
+	PHPMYADMIN_PASSWD	the password for phpmyadmin's admin.
+
+2.run it.
+	./install.sh
+
+
+
+ps. 
+1) If you got any mistakes when installing. just re-run this script
+      ./instal.sh 
+   it won't duplicate any paremeters or configs.
+
+2) There is a warning while installing, you need to press enter to continue. if you don't want it, execute the following command:
+      sed -i -e "s/read.*//g" ./install.sh 
+   and then run ./install.sh again.
+
+
+any suggestions or bugs, e-mail me.
+
+                                        Youn
+                                        youn.xu@corp.globalmarket.com

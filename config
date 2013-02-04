@@ -1,0 +1,3 @@
+EXTMAIL_DOMAIN=""  #your domain. example:example.com or globalmarket.com
+MYSQL_PASSWD="" #set your root's passwd for mysql
+PHPMYADMIN_PASSWD="" #set your phpmyadmin app admin's passwd
