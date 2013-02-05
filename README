@@ -23,7 +23,6 @@ https://bugs.launchpad.net/ubuntu/+source/cyrus-sasl2/+bug/875440
 1.fill up the ./config file 
 	EXTMAIL_DOMAIN	domain is your server's domain.example: example.com or globalmarket.com
 	MYSQL_PASSWD	the password for mysql's root.
-	PHPMYADMIN_PASSWD	the password for phpmyadmin's admin.
 
 2.run it.
 	./install.sh
@@ -36,7 +35,7 @@ ps.
    it won't duplicate any paremeters or configs.
 
 2) There is a warning while installing, you need to press enter to continue. if you don't want it, execute the following command:
-      sed -i -e "s/read.*//g" ./install.sh 
+      sed -i -e "s/^read/#read/g" ./install.sh 
    and then run ./install.sh again.
 
 

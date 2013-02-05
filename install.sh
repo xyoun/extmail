@@ -34,7 +34,7 @@ fi
 source ./config
 
 #check whether config has been assigned.
-if [ "$EXTMAIL_DOMAIN" == "" ] || [ "$MYSQL_PASSWD" == "" ] || [ "$PHPMYADMIN_PASSWD" == "" ]; then
+if [ "$EXTMAIL_DOMAIN" == "" ] || [ "$MYSQL_PASSWD" == "" ]; then
 	echo "error, please fill up ./config and try again."
 	exit 1
 fi
@@ -45,9 +45,9 @@ cat <<EOF >&1
 CAUTIONS!!
 please check the following information:
 
+	   Hostname:$(hostname -f)
      Extmail domain: $EXTMAIL_DOMAIN
     	 Mysql pass: $MYSQL_PASSWD
-    PhpMyAdmin pass: $PHPMYADMIN_PASSWD
 
 EOF
 read -p "press enter to continue, Ctrl-C to exit: "
@@ -115,10 +115,8 @@ postfix postfix/root_address string root@$EXTMAIL_DOMAIN
 postfix postfix/mailname string $EXTMAIL_DOMAIN
 postfix postfix/relayhost string 
 postfix postfix/destinations string $(hostname -f), localhost
-phpmyadmin phpmyadmin/app-password-confirm password 
 phpmyadmin phpmyadmin/dbconfig-install boolean true
-phpmyadmin phpmyadmin/mysql/admin-pass $MYSQL_PASSWD
-phpmyadmin phpmyadmin/mysql/app-pass password $PHPMYADMIN_PASSWD
+phpmyadmin phpmyadmin/mysql/admin-pass password $MYSQL_PASSWD
 phpmyadmin phpmyadmin/reconfigure-webserver multiselect apache2
 courier-base courier-base/webadmin-configmode boolean false
 
@@ -588,7 +586,6 @@ Service information:
  PhpMyAdmin:   http://$EXTMAIL_DOMAIN/phpmyadmin
                   mysql user: root 
                   mysql pass: $MYSQL_PASSWD
-                  admin pass: $PHPMYADMIN_PASSWD
 
 You can use mail-client like thunderbird to recieve and send mails:
 	POP3: pop3.$EXTMAIL_DOMAIN 
